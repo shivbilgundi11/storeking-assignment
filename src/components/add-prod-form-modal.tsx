@@ -27,18 +27,18 @@ function AddProdFormModal({ getNewProd }: AddProdFormModalProps) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => {
-    reset(); // Reset form on opening modal
+    reset();
     setShow(true);
   };
 
   const onSubmit: SubmitHandler<FormFields> = (formData) => {
     const newProduct: ProdDetail = {
-      id: Date.now().toString(), // Generate unique ID
+      id: Date.now().toString(),
       ...formData,
     };
-    getNewProd(newProduct); // Call parent function to add product
-    reset(); // Reset form after submission
-    setShow(false); // Close modal after submission
+    getNewProd(newProduct);
+    reset();
+    setShow(false);
   };
 
   return (

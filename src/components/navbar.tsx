@@ -7,7 +7,7 @@ export default function Navbar() {
     <>
       <nav className="container h-50 border-bottom p-2 d-flex align-items-center justify-content-between">
         <a href="/">
-          <img src={Logo} className="" alt="storeking-logo" />
+          <img src={Logo} width={140} className="" alt="storeking-logo" />
         </a>
 
         <a
@@ -18,7 +18,8 @@ export default function Navbar() {
             variant={"success"}
             className="d-d-inline-flex align-items-center fw-medium"
           >
-            <FaGithub className="me-1" /> Source Code
+            <FaGithub className="me-1" />{" "}
+            <span className="d-none d-md-inline-block">Source Code</span>
           </Button>
         </a>
       </nav>

@@ -98,16 +98,16 @@ export default function ProductsPage() {
   return (
     <main className="container py-5 min-vh-100">
       {/* ===========Filter-Options=========== */}
-      <section className="d-flex align-items-center flex-wrap gap-1 justify-content-between border-bottom py-2">
+      <section className="d-flex flex-column flex-md-row align-items-start gap-2 justify-content-between border-bottom py-2">
         <input
           type="text"
-          className="form-control border-2 w-50"
+          className="form-control border-2 flex-grow-1"
           placeholder="Search products..."
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
 
-        <div className="d-flex align-items-center gap-2">
+        <div className="d-flex align-items-center gap-2 mt-2 mt-md-0">
           <input
             type="number"
             className="form-control border-2"
@@ -131,56 +131,58 @@ export default function ProductsPage() {
 
       {/* ===========Products Listings=========== */}
       <section className="container py-3">
-        <table className="w-100">
-          <thead className="text-center border">
-            <tr>
-              {tableSections.map(({ id, label }) => (
-                <th
-                  key={id}
-                  className="p-2 border border-black bg-secondary-subtle"
-                >
-                  {label}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="text-center border">
-            {filteredProducts.map((prod) => (
-              <tr key={prod?.id} className="border-bottom">
-                <td className="fw-medium fs-5 p-2">{prod.name}</td>
-                <td>{prod.skuCode.toUpperCase()}</td>
-                <td>
-                  {Number(prod.mrp).toLocaleString("en-IN", {
-                    style: "currency",
-                    currency: "INR",
-                  })}
-                </td>
-                <td>
-                  {Number(prod.price).toLocaleString("en-IN", {
-                    style: "currency",
-                    currency: "INR",
-                  })}
-                </td>
-                <td>
-                  <Button
-                    className="btn btn-secondary"
-                    onClick={() => handleEditProd(prod)}
+        <div className="table-responsive">
+          <table className="table w-100">
+            <thead className="text-center border">
+              <tr>
+                {tableSections.map(({ id, label }) => (
+                  <th
+                    key={id}
+                    className="p-2 border border-black bg-secondary-subtle"
                   >
-                    <FaEdit />
-                  </Button>
-                </td>
-                <td>
-                  <Button
-                    variant="danger"
-                    onClick={() => handleDeleteProd(prod.skuCode)}
-                  >
-                    <MdDelete />
-                  </Button>
-                </td>
+                    {label}
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="text-center border">
+              {filteredProducts.map((prod) => (
+                <tr key={prod?.id} className="border-bottom">
+                  <td className="fw-medium fs-5 p-2">{prod.name}</td>
+                  <td>{prod.skuCode.toUpperCase()}</td>
+                  <td>
+                    {Number(prod.mrp).toLocaleString("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                  </td>
+                  <td>
+                    {Number(prod.price).toLocaleString("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                  </td>
+                  <td>
+                    <Button
+                      className="btn btn-secondary"
+                      onClick={() => handleEditProd(prod)}
+                    >
+                      <FaEdit />
+                    </Button>
+                  </td>
+                  <td>
+                    <Button
+                      variant="danger"
+                      onClick={() => handleDeleteProd(prod.skuCode)}
+                    >
+                      <MdDelete />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       {/* ===========Add/Edit Product Modals=========== */}

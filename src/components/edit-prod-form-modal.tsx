@@ -52,7 +52,6 @@ function EditModal({ product, show, onClose, updateProd }: EditModalProps) {
 
     updateProd(updatedProd);
     onClose();
-    // You can add a toast notification here for success
   };
 
   return (
