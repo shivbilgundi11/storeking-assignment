@@ -45,3 +45,12 @@ export const initialProducts = [
   { id: 9, name: "Study Desk", skuCode: "STY33445", mrp: 15000, price: 13500 },
   { id: 10, name: "TV Stand", skuCode: "TVS99012", mrp: 12000, price: 11000 },
 ];
+
+// Product Detail Type...
+export type ProdDetail = {
+  id?: string | number;
+  name: string;
+  skuCode: string;
+  mrp: number;
+  price: number;
+};
