@@ -96,11 +96,12 @@ function EditModal({ product, show, onClose, updateProd }: EditModalProps) {
                   message: "SKU Code must have at least 8 characters.",
                 },
                 pattern: {
-                  value: /^[A-Za-z0-9]{8,}$/,
-                  message: "SKU Code must be alphanumeric with 8+ characters.",
+                  value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                  message: "SKU Code must contain both letters and numbers.",
                 },
               })}
             />
+
             {errors.skuCode && (
               <p className="text-danger">{errors.skuCode.message}</p>
             )}

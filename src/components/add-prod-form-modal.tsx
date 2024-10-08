@@ -84,8 +84,13 @@ function AddProdFormModal({ getNewProd }: AddProdFormModalProps) {
                   value: 8,
                   message: "SKU Code must have at least 8 characters.",
                 },
+                pattern: {
+                  value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                  message: "SKU Code must contain both letters and numbers.",
+                },
               })}
             />
+
             {errors.skuCode && (
               <p className="text-danger">{errors.skuCode.message}</p>
             )}
